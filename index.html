@@ -1,0 +1,758 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>শুভ বিবাহ — অরিজিতা ও অজয়</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Tiro+Bangla:ital@0;1&family=Hind+Siliguri:wght@400;500;600;700&family=Baloo+Da+2:wght@500;600;700&family=Cormorant+Garamond:ital,wght@0,500;1,500;1,600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --maroon-deep:#420a12;
+    --maroon:#731421;
+    --maroon-soft:#8f1c29;
+    --gold:#c79a3f;
+    --gold-light:#e8cd8a;
+    --gold-pale:#f4e6bd;
+    --cream:#fbf1df;
+    --ivory:#fffaf0;
+    --leaf:#3f5b3d;
+    --ink:#2b1810;
+    --ink-soft:#5a4636;
+    --shadow:0 20px 50px rgba(45,10,10,0.35);
+  }
+
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    background:var(--cream);
+    color:var(--ink);
+    font-family:'Hind Siliguri', sans-serif;
+    -webkit-font-smoothing:antialiased;
+    overflow-x:hidden;
+  }
+  h1,h2,h3{font-family:'Tiro Bangla', serif; margin:0;}
+  a{color:inherit;}
+  img{max-width:100%; display:block;}
+  section{position:relative; padding:90px 20px;}
+  .wrap{max-width:1080px; margin:0 auto;}
+
+  .eyebrow{
+    text-align:center;
+    font-family:'Cormorant Garamond', serif;
+    font-style:italic;
+    letter-spacing:0.24em;
+    text-transform:uppercase;
+    color:var(--gold);
+    font-size:0.8rem;
+    margin-bottom:10px;
+  }
+  .heading{
+    text-align:center;
+    font-size:clamp(1.7rem,4vw,2.4rem);
+    color:var(--maroon-deep);
+    margin-bottom:14px;
+  }
+  .divider{
+    display:flex; align-items:center; justify-content:center; gap:14px;
+    margin:0 auto 46px; max-width:360px;
+  }
+  .divider .line{flex:1;height:1px;background:linear-gradient(90deg,transparent,var(--gold),transparent);}
+  .divider svg{width:22px;height:22px;flex-shrink:0;}
+
+  /* ============ NAV ============ */
+  header.nav{
+    position:fixed; top:0; left:0; right:0; z-index:1000;
+    display:flex; align-items:center; justify-content:space-between;
+    padding:16px 26px;
+    background:transparent;
+    transition:background .35s ease, box-shadow .35s ease, padding .35s ease;
+  }
+  header.nav.solid{
+    background:rgba(66,10,18,0.92);
+    box-shadow:0 6px 20px rgba(0,0,0,0.25);
+    padding:10px 26px;
+    backdrop-filter:blur(6px);
+  }
+  .brand{
+    font-family:'Tiro Bangla', serif;
+    color:var(--gold-light);
+    font-size:1.1rem;
+    letter-spacing:0.03em;
+  }
+  nav.links{display:flex; gap:22px; align-items:center;}
+  nav.links a{
+    color:var(--gold-pale);
+    text-decoration:none;
+    font-size:0.92rem;
+    font-weight:500;
+    padding:6px 2px;
+    border-bottom:1px solid transparent;
+    transition:border-color .2s ease, color .2s ease;
+  }
+  nav.links a:hover, nav.links a.active{
+    color:#fff; border-color:var(--gold);
+  }
+  .music-btn, .menu-btn{
+    background:rgba(255,255,255,0.08);
+    border:1px solid rgba(232,205,138,0.5);
+    color:var(--gold-light);
+    width:38px; height:38px;
+    border-radius:50%;
+    display:flex; align-items:center; justify-content:center;
+    cursor:pointer;
+    font-size:1rem;
+    flex-shrink:0;
+  }
+  .menu-btn{display:none;}
+  .nav-right{display:flex; align-items:center; gap:14px;}
+
+  @media (max-width:820px){
+    nav.links{
+      position:fixed; top:0; right:0; height:100vh; width:min(78vw,320px);
+      background:var(--maroon-deep);
+      flex-direction:column; justify-content:center; align-items:flex-start;
+      padding:40px 34px; gap:22px;
+      transform:translateX(100%);
+      transition:transform .35s ease;
+      box-shadow:-10px 0 30px rgba(0,0,0,0.3);
+    }
+    nav.links.open{transform:translateX(0);}
+    .menu-btn{display:flex;}
+  }
+
+  /* ============ HERO ============ */
+  #hero{
+    min-height:100vh;
+    display:flex; align-items:center; justify-content:center;
+    text-align:center;
+    background:radial-gradient(ellipse at top, #7a1a26 0%, #4c0b13 55%, #2c0709 100%);
+    overflow:hidden;
+    padding:140px 20px 80px;
+  }
+  .alpana{
+    position:absolute; inset:0; z-index:0;
+    display:flex; align-items:center; justify-content:center;
+    opacity:0.22;
+    animation:spin 140s linear infinite;
+  }
+  .alpana svg{width:min(900px,140vw); height:auto;}
+  @keyframes spin{ to{ transform:rotate(360deg); } }
+
+  .petals{position:fixed; inset:0; pointer-events:none; z-index:5; overflow:hidden;}
+  .petal{
+    position:absolute; top:-40px; font-size:1.4rem;
+    animation:fall linear infinite;
+    opacity:0.85;
+    user-select:none;
+  }
+  @keyframes fall{
+    0%{transform:translateY(-10vh) translateX(0) rotate(0deg);}
+    100%{transform:translateY(110vh) translateX(30px) rotate(320deg);}
+  }
+
+  .hero-content{position:relative; z-index:2; color:var(--gold-pale);}
+  .invocation-hero{
+    font-family:'Tiro Bangla', serif;
+    font-size:1.15rem;
+    letter-spacing:0.05em;
+    color:var(--gold-light);
+    margin-bottom:8px;
+  }
+  .conch{width:34px; height:34px; margin:0 auto 14px; opacity:0.9;}
+  h1.hero-names{
+    font-size:clamp(2.4rem,8vw,4rem);
+    color:#fff8ea;
+    text-shadow:0 4px 30px rgba(0,0,0,0.35);
+    line-height:1.2;
+  }
+  h1.hero-names .amp{
+    color:var(--gold); font-family:'Cormorant Garamond', serif; font-style:italic; margin:0 14px; font-size:0.6em;
+  }
+  .hero-sub{
+    font-family:'Cormorant Garamond', serif;
+    font-style:italic;
+    font-size:1.05rem;
+    letter-spacing:0.08em;
+    color:var(--gold-pale);
+    margin-top:14px;
+  }
+  .save-date{
+    display:inline-flex; align-items:center; gap:10px;
+    margin-top:34px;
+    border:1px solid var(--gold);
+    padding:12px 26px;
+    border-radius:999px;
+    background:rgba(255,255,255,0.06);
+    animation:pulse 2.6s ease-in-out infinite;
+  }
+  @keyframes pulse{
+    0%,100%{box-shadow:0 0 0 0 rgba(199,154,63,0.35);}
+    50%{box-shadow:0 0 0 10px rgba(199,154,63,0);}
+  }
+  .save-date .label{font-family:'Cormorant Garamond',serif; font-style:italic; letter-spacing:0.18em; text-transform:uppercase; font-size:0.75rem; color:var(--gold);}
+  .save-date .date{font-weight:600; font-size:1rem; color:#fff;}
+
+  .scroll-hint{
+    position:absolute; bottom:26px; left:50%; transform:translateX(-50%);
+    color:var(--gold-pale); font-size:0.78rem; letter-spacing:0.14em;
+    display:flex; flex-direction:column; align-items:center; gap:6px;
+    opacity:0.8;
+  }
+  .scroll-hint .arrow{width:14px; height:14px; border-right:2px solid var(--gold); border-bottom:2px solid var(--gold); transform:rotate(45deg); animation:bob 1.8s ease-in-out infinite;}
+  @keyframes bob{0%,100%{transform:translateY(0) rotate(45deg);}50%{transform:translateY(6px) rotate(45deg);}}
+
+  /* ============ COUPLE ============ */
+  #couple{background:var(--cream);}
+  .couple-grid{display:grid; grid-template-columns:1fr 1fr; gap:34px;}
+  @media (max-width:720px){.couple-grid{grid-template-columns:1fr;}}
+  .person-card{
+    background:var(--ivory); border:1px solid var(--gold-light);
+    padding:30px 26px; text-align:center; position:relative;
+  }
+  .person-card::before{content:"";position:absolute;inset:6px;border:1px solid rgba(199,154,63,0.35);pointer-events:none;}
+  .portrait{
+    width:150px; height:150px; border-radius:50%; overflow:hidden; margin:0 auto 18px;
+    border:5px solid var(--ivory); outline:2px solid var(--gold); outline-offset:3px;
+    box-shadow:var(--shadow);
+  }
+  .portrait img{width:100%; height:100%; object-fit:cover; object-position:top center;}
+  .person-card h3{color:var(--maroon-deep); font-size:1.35rem;}
+  .person-card .nick{font-family:'Cormorant Garamond',serif; font-style:italic; color:var(--gold); margin:4px 0 16px;}
+  .person-card dl{margin:0; text-align:left; max-width:280px; margin:0 auto;}
+  .person-card dl div{display:flex; gap:10px; padding:7px 0; border-bottom:1px dashed rgba(115,20,33,0.18); font-size:0.93rem;}
+  .person-card dl div:last-child{border-bottom:none;}
+  .person-card dt{color:var(--maroon-soft); font-weight:600; flex:0 0 70px;}
+  .person-card dd{margin:0; color:var(--ink);}
+
+  /* ============ DETAILS / COUNTDOWN ============ */
+  #details{
+    background:var(--maroon-deep); color:var(--gold-pale);
+  }
+  #details .eyebrow{color:var(--gold-light);}
+  #details .heading{color:#fff8ea;}
+  .date-grid{
+    display:grid; grid-template-columns:repeat(4,1fr); gap:18px; margin-bottom:50px;
+  }
+  @media (max-width:820px){.date-grid{grid-template-columns:repeat(2,1fr);}}
+  .date-card{
+    background:rgba(255,255,255,0.05); border:1px solid rgba(232,205,138,0.35);
+    padding:22px 16px; text-align:center;
+  }
+  .date-card .label{font-family:'Cormorant Garamond',serif; font-style:italic; text-transform:uppercase; letter-spacing:0.14em; font-size:0.72rem; color:var(--gold);}
+  .date-card .value{margin-top:10px; font-size:1.02rem; line-height:1.6; color:#fff8ea;}
+
+  .countdown{
+    display:flex; justify-content:center; gap:16px; flex-wrap:wrap;
+  }
+  .countdown .box{
+    background:linear-gradient(180deg, rgba(232,205,138,0.14), rgba(232,205,138,0.04));
+    border:1px solid var(--gold); width:110px; padding:18px 10px; text-align:center; border-radius:6px;
+  }
+  .countdown .num{font-family:'Tiro Bangla',serif; font-size:2rem; color:#fff8ea;}
+  .countdown .unit{font-size:0.72rem; letter-spacing:0.1em; color:var(--gold-light); text-transform:uppercase; margin-top:4px;}
+
+  /* ============ VENUE ============ */
+  #venue{background:var(--cream); text-align:center;}
+  .venue-card{
+    max-width:520px; margin:0 auto; background:var(--ivory); border:1px solid var(--gold-light);
+    padding:36px 30px;
+  }
+  .venue-card h3{color:var(--maroon-deep); font-size:1.5rem;}
+  .venue-card p{color:var(--ink-soft); font-size:0.98rem; margin:10px 0 24px;}
+  .map-btn{
+    display:inline-flex; align-items:center; gap:10px;
+    background:var(--maroon); color:#fff8ea; text-decoration:none;
+    padding:12px 26px; border-radius:4px; font-weight:600; font-size:0.92rem;
+    transition:background .2s ease;
+  }
+  .map-btn:hover{background:var(--maroon-soft);}
+
+  /* ============ FAMILY ============ */
+  #family{background:var(--gold-pale);}
+  .family-grid{display:grid; grid-template-columns:1fr 1fr; gap:34px;}
+  @media (max-width:720px){.family-grid{grid-template-columns:1fr;}}
+  .family-card{background:var(--ivory); border:1px solid var(--gold); padding:28px 26px;}
+  .family-card h3{color:var(--maroon-deep); text-align:center; font-size:1.25rem; margin-bottom:18px;}
+  .family-card ul{list-style:none; margin:0; padding:0;}
+  .family-card li{
+    display:flex; justify-content:space-between; gap:12px;
+    padding:9px 0; border-bottom:1px dashed rgba(115,20,33,0.2); font-size:0.94rem;
+  }
+  .family-card li:last-child{border-bottom:none;}
+  .family-card li span:first-child{color:var(--maroon-soft); font-weight:600;}
+
+  /* ============ EVENTS ============ */
+  #events{background:var(--cream);}
+  .events-grid{display:grid; grid-template-columns:repeat(4,1fr); gap:20px;}
+  @media (max-width:900px){.events-grid{grid-template-columns:repeat(2,1fr);}}
+  @media (max-width:520px){.events-grid{grid-template-columns:1fr;}}
+  .event-card{
+    background:var(--ivory); border:1px solid var(--gold-light); padding:26px 18px; text-align:center;
+    transition:transform .25s ease, box-shadow .25s ease;
+  }
+  .event-card:hover{transform:translateY(-6px); box-shadow:var(--shadow);}
+  .event-card .icon{font-size:1.8rem; margin-bottom:12px;}
+  .event-card h4{font-family:'Tiro Bangla',serif; color:var(--maroon); font-size:1.1rem; margin-bottom:6px;}
+  .event-card p{font-size:0.85rem; color:var(--ink-soft); line-height:1.7; margin:0;}
+
+  /* ============ GALLERY ============ */
+  #gallery{background:var(--maroon-deep); color:var(--gold-pale);}
+  #gallery .eyebrow{color:var(--gold-light);}
+  #gallery .heading{color:#fff8ea;}
+  .gallery-grid{display:grid; grid-template-columns:repeat(3,1fr); gap:16px;}
+  @media (max-width:720px){.gallery-grid{grid-template-columns:repeat(2,1fr);}}
+  .gallery-item{aspect-ratio:1/1; overflow:hidden; border:1px solid rgba(232,205,138,0.4);}
+  .gallery-item img{width:100%; height:100%; object-fit:cover; transition:transform .4s ease;}
+  .gallery-item:hover img{transform:scale(1.08);}
+  .gallery-item.placeholder{
+    display:flex; align-items:center; justify-content:center;
+    border:2px dashed rgba(232,205,138,0.5);
+    color:var(--gold-light); font-size:0.85rem; text-align:center; padding:10px;
+  }
+
+  /* ============ INVITATION ============ */
+  #invitation{background:var(--gold-pale);}
+  .invite-box{
+    max-width:640px; margin:0 auto; text-align:center;
+    font-family:'Tiro Bangla', serif; font-size:1.08rem; line-height:2.1; color:var(--ink);
+  }
+  .invite-box .big-quote{font-size:2.4rem; color:var(--gold); display:block; line-height:0.6; margin-bottom:10px;}
+
+  /* ============ RSVP ============ */
+  #rsvp{background:var(--cream);}
+  .rsvp-wrap{display:grid; grid-template-columns:1fr 1fr; gap:40px; align-items:start;}
+  @media (max-width:820px){.rsvp-wrap{grid-template-columns:1fr;}}
+  .contact-box{background:var(--ivory); border:1px solid var(--gold-light); padding:30px 26px;}
+  .contact-box h3{color:var(--maroon-deep); font-size:1.2rem; margin-bottom:16px;}
+  .contact-row{display:flex; justify-content:space-between; padding:10px 0; border-bottom:1px dashed rgba(115,20,33,0.2); font-size:0.94rem;}
+  .contact-row:last-of-type{border-bottom:none;}
+  .contact-row span:first-child{color:var(--maroon-soft); font-weight:600;}
+  .whatsapp-btn{
+    margin-top:18px; display:inline-flex; align-items:center; gap:10px;
+    background:#3fae5a; color:#fff; text-decoration:none; padding:12px 22px;
+    border-radius:4px; font-weight:600; font-size:0.9rem;
+  }
+  .rsvp-form{background:var(--ivory); border:1px solid var(--gold-light); padding:30px 26px;}
+  .rsvp-form h3{color:var(--maroon-deep); font-size:1.2rem; margin-bottom:16px;}
+  .rsvp-form label{display:block; font-size:0.85rem; color:var(--ink-soft); margin-bottom:6px;}
+  .rsvp-form input, .rsvp-form select, .rsvp-form textarea{
+    width:100%; padding:10px 12px; margin-bottom:16px; border:1px solid var(--gold-light);
+    background:#fff; font-family:'Hind Siliguri',sans-serif; font-size:0.92rem; border-radius:3px;
+  }
+  .rsvp-form button{
+    width:100%; background:var(--maroon); color:#fff8ea; border:none; padding:13px;
+    font-weight:600; font-size:0.95rem; cursor:pointer; border-radius:3px; transition:background .2s ease;
+  }
+  .rsvp-form button:hover{background:var(--maroon-soft);}
+
+  /* ============ FOOTER ============ */
+  footer.site-footer{
+    background:var(--maroon-deep); color:var(--gold-pale);
+    text-align:center; padding:50px 20px 30px; position:relative;
+  }
+  footer.site-footer .conch{width:30px;height:30px;margin:0 auto 14px;opacity:0.85;}
+  footer.site-footer .names{font-family:'Tiro Bangla',serif; font-size:1.3rem; color:#fff8ea;}
+  footer.site-footer .fine{margin-top:10px; font-family:'Cormorant Garamond',serif; font-style:italic; font-size:0.85rem; color:var(--gold-light); letter-spacing:0.06em;}
+  footer.site-footer .credit{margin-top:26px; font-size:0.72rem; opacity:0.55;}
+
+  .to-top{
+    position:fixed; bottom:24px; right:24px; z-index:900;
+    width:44px; height:44px; border-radius:50%;
+    background:var(--maroon); color:var(--gold-light); border:1px solid var(--gold);
+    display:flex; align-items:center; justify-content:center; cursor:pointer;
+    opacity:0; pointer-events:none; transition:opacity .3s ease, transform .3s ease;
+    font-size:1.1rem;
+  }
+  .to-top.show{opacity:1; pointer-events:auto;}
+
+  @media (prefers-reduced-motion: reduce){
+    .alpana{animation:none;}
+    .petal{animation:none; display:none;}
+    .save-date{animation:none;}
+    .scroll-hint .arrow{animation:none;}
+  }
+</style>
+</head>
+<body>
+
+<div class="petals" id="petals"></div>
+
+<header class="nav" id="siteNav">
+  <div class="brand">অ &amp; অ</div>
+  <div class="nav-right">
+    <nav class="links" id="navLinks">
+      <a href="#hero">হোম</a>
+      <a href="#couple">যুগল</a>
+      <a href="#details">তারিখ</a>
+      <a href="#venue">স্থান</a>
+      <a href="#family">পরিবার</a>
+      <a href="#events">অনুষ্ঠান</a>
+      <a href="#gallery">গ্যালারি</a>
+      <a href="#rsvp">RSVP</a>
+    </nav>
+    <button class="music-btn" id="musicBtn" title="সঙ্গীত চালু/বন্ধ করুন">🔈</button>
+    <button class="menu-btn" id="menuBtn" title="মেনু">☰</button>
+  </div>
+</header>
+
+<audio id="bgMusic" loop preload="none">
+  <!-- Add your own music file, e.g. <source src="audio/shehnai.mp3" type="audio/mpeg"> -->
+</audio>
+
+<section id="hero">
+  <div class="alpana" aria-hidden="true">
+    <svg viewBox="0 0 400 400" xmlns="http://www.w3.org/2000/svg">
+      <g fill="none" stroke="#e8cd8a" stroke-width="1.4">
+        <circle cx="200" cy="200" r="180"/>
+        <circle cx="200" cy="200" r="150"/>
+        <circle cx="200" cy="200" r="60"/>
+        <g id="petalsRing"></g>
+      </g>
+    </svg>
+  </div>
+
+  <div class="hero-content">
+    <p class="invocation-hero">শ্রী শ্রী প্রজাপতয়ে নমঃ</p>
+    <svg class="conch" viewBox="0 0 48 48" fill="none" stroke="#e8cd8a" stroke-width="1.4"><path d="M24 6c8 0 14 8 14 18 0 9-6 16-14 16S10 33 10 24C10 14 16 6 24 6Z"/><path d="M24 12c4 0 8 5 8 12 0 6-4 10-8 10s-8-4-8-10c0-7 4-12 8-12Z"/></svg>
+
+    <h1 class="hero-names">অরিজিতা<span class="amp">ও</span>অজয়</h1>
+    <p class="hero-sub">একটি নতুন যাত্রা · একটি নতুন শুরু</p>
+
+    <div class="save-date">
+      <span class="label">Save the Date</span>
+      <span class="date">২৮ জানুয়ারী, ২০২৭ · বৃহস্পতিবার</span>
+    </div>
+  </div>
+
+  <div class="scroll-hint">
+    <span>নিচে স্ক্রল করুন</span>
+    <span class="arrow"></span>
+  </div>
+</section>
+
+<section id="couple">
+  <div class="wrap">
+    <p class="eyebrow">Bride &amp; Groom</p>
+    <h2 class="heading">যুগল পরিচিতি</h2>
+    <div class="divider"><span class="line"></span><svg viewBox="0 0 24 24" fill="none" stroke="#c79a3f" stroke-width="1.4"><path d="M12 3 L14 9 L21 9 L15.5 13 L17.5 20 L12 16 L6.5 20 L8.5 13 L3 9 L10 9 Z"/></svg><span class="line"></span></div>
+
+    <div class="couple-grid">
+      <div class="person-card">
+        <div class="portrait"><img src="images/couple-hero.png" alt="অরিজিতা মোদক"></div>
+        <h3>অরিজিতা মোদক</h3>
+        <p class="nick">মান্তু</p>
+        <dl>
+          <div><dt>পিতা</dt><dd>শ্রী অসীম মোদক</dd></div>
+          <div><dt>মাতা</dt><dd>শ্রীমতী জয়শ্রী মোদক</dd></div>
+          <div><dt>নিবাস</dt><dd>রায়কতপাড়া, জলপাইগুড়ি</dd></div>
+        </dl>
+      </div>
+      <div class="person-card">
+        <div class="portrait"><img src="images/couple-soft.png" alt="অজয় দাস"></div>
+        <h3>অজয় দাস</h3>
+        <p class="nick">শিশির</p>
+        <dl>
+          <div><dt>পিতা</dt><dd>শ্রী কানাই চন্দ্র দাস</dd></div>
+          <div><dt>মাতা</dt><dd>শ্রীমতী সরস্বতী দাস</dd></div>
+          <div><dt>নিবাস</dt><dd>পান্ডা পাড়া ১০ নম্বর গলি, জলপাইগুড়ি</dd></div>
+        </dl>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="details">
+  <div class="wrap">
+    <p class="eyebrow">Wedding Details</p>
+    <h2 class="heading">শুভ বিবাহের তারিখ ও লগ্ন</h2>
+    <div class="divider"><span class="line"></span><svg viewBox="0 0 24 24" fill="none" stroke="#c79a3f" stroke-width="1.4"><path d="M12 3 L14 9 L21 9 L15.5 13 L17.5 20 L12 16 L6.5 20 L8.5 13 L3 9 L10 9 Z"/></svg><span class="line"></span></div>
+
+    <div class="date-grid">
+      <div class="date-card"><div class="label">বাংলা তারিখ</div><div class="value">১৩ ই মাঘ, ১৪৩৩</div></div>
+      <div class="date-card"><div class="label">ইংরেজি তারিখ</div><div class="value">২৮ জানুয়ারী, ২০২৭</div></div>
+      <div class="date-card"><div class="label">বার</div><div class="value">বৃহস্পতিবার</div></div>
+      <div class="date-card"><div class="label">শুভ লগ্ন</div><div class="value">রাত্রি ১টা ২৯ গতে<br>৫টা ২৪ মধ্যে</div></div>
+    </div>
+
+    <div class="countdown" id="countdown">
+      <div class="box"><div class="num" id="cd-days">00</div><div class="unit">দিন</div></div>
+      <div class="box"><div class="num" id="cd-hours">00</div><div class="unit">ঘণ্টা</div></div>
+      <div class="box"><div class="num" id="cd-mins">00</div><div class="unit">মিনিট</div></div>
+      <div class="box"><div class="num" id="cd-secs">00</div><div class="unit">সেকেন্ড</div></div>
+    </div>
+  </div>
+</section>
+
+<section id="venue">
+  <div class="wrap">
+    <p class="eyebrow">Venue</p>
+    <h2 class="heading">বিবাহ বাসর</h2>
+    <div class="divider"><span class="line"></span><svg viewBox="0 0 24 24" fill="none" stroke="#c79a3f" stroke-width="1.4"><path d="M12 3 L14 9 L21 9 L15.5 13 L17.5 20 L12 16 L6.5 20 L8.5 13 L3 9 L10 9 Z"/></svg><span class="line"></span></div>
+
+    <div class="venue-card">
+      <h3>সানু ভবন</h3>
+      <p>রায়কতপাড়া, জলপাইগুড়ি<br>পশ্চিমবঙ্গ, ভারত</p>
+      <a class="map-btn" href="https://www.google.com/maps/search/?api=1&query=Sanu+Bhavan+Raykatpara+Jalpaiguri" target="_blank" rel="noopener">
+        📍 Google মানচিত্রে দেখুন
+      </a>
+    </div>
+  </div>
+</section>
+
+<section id="family">
+  <div class="wrap">
+    <p class="eyebrow">Families</p>
+    <h2 class="heading">পরিবার পরিচিতি</h2>
+    <div class="divider"><span class="line"></span><svg viewBox="0 0 24 24" fill="none" stroke="#c79a3f" stroke-width="1.4"><path d="M12 3 L14 9 L21 9 L15.5 13 L17.5 20 L12 16 L6.5 20 L8.5 13 L3 9 L10 9 Z"/></svg><span class="line"></span></div>
+
+    <div class="family-grid">
+      <div class="family-card">
+        <h3>পাত্রীর পরিবার</h3>
+        <ul>
+          <li><span>পাত্রী</span><span>শ্রীমতী অরিজিতা মোদক (মান্তু)</span></li>
+          <li><span>পিতা</span><span>শ্রী অসীম মোদক</span></li>
+          <li><span>মাতা</span><span>শ্রীমতী জয়শ্রী মোদক</span></li>
+          <li><span>নিবাস</span><span>রায়কতপাড়া, জলপাইগুড়ি</span></li>
+        </ul>
+      </div>
+      <div class="family-card">
+        <h3>পাত্রের পরিবার</h3>
+        <ul>
+          <li><span>পাত্র</span><span>শ্রীমান শ্রী অজয় দাস (শিশির)</span></li>
+          <li><span>পিতা</span><span>শ্রী কানাই চন্দ্র দাস</span></li>
+          <li><span>মাতা</span><span>শ্রীমতী সরস্বতী দাস</span></li>
+          <li><span>নিবাস</span><span>পান্ডা পাড়া ১০ নম্বর গলি, জলপাইগুড়ি</span></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="events">
+  <div class="wrap">
+    <p class="eyebrow">Wedding Events</p>
+    <h2 class="heading">অনুষ্ঠানসূচী</h2>
+    <div class="divider"><span class="line"></span><svg viewBox="0 0 24 24" fill="none" stroke="#c79a3f" stroke-width="1.4"><path d="M12 3 L14 9 L21 9 L15.5 13 L17.5 20 L12 16 L6.5 20 L8.5 13 L3 9 L10 9 Z"/></svg><span class="line"></span></div>
+
+    <div class="events-grid">
+      <div class="event-card">
+        <div class="icon">🍚</div>
+        <h4>আইবুড়োভাত</h4>
+        <p>উভয় পক্ষের রীতি মেনে নির্দিষ্ট সময়ে অনুষ্ঠিত হবে।</p>
+      </div>
+      <div class="event-card">
+        <div class="icon">🌼</div>
+        <h4>গায়ে হলুদ</h4>
+        <p>পারিবারিক আশীর্বাদ ও মঙ্গল আচারের অনুষ্ঠান।</p>
+      </div>
+      <div class="event-card">
+        <div class="icon">🙏</div>
+        <h4>আশীর্বাদ</h4>
+        <p>গুরুজনদের আশীর্বাদ গ্রহণের শুভ পর্ব।</p>
+      </div>
+      <div class="event-card">
+        <div class="icon">💍</div>
+        <h4>শুভ বিবাহ</h4>
+        <p>২৮ জানুয়ারী, ২০২৭ · সানু ভবন, রায়কতপাড়া, জলপাইগুড়ি</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="gallery">
+  <div class="wrap">
+    <p class="eyebrow">Gallery</p>
+    <h2 class="heading">কিছু মুহূর্ত</h2>
+    <div class="divider"><span class="line"></span><svg viewBox="0 0 24 24" fill="none" stroke="#c79a3f" stroke-width="1.4"><path d="M12 3 L14 9 L21 9 L15.5 13 L17.5 20 L12 16 L6.5 20 L8.5 13 L3 9 L10 9 Z"/></svg><span class="line"></span></div>
+
+    <div class="gallery-grid">
+      <div class="gallery-item"><img src="images/couple-hero.png" alt="ছবি ১"></div>
+      <div class="gallery-item"><img src="images/couple-soft.png" alt="ছবি ২"></div>
+      <div class="gallery-item placeholder">ছবি যোগ করুন<br><small>images/photo-3.jpg</small></div>
+      <div class="gallery-item placeholder">ছবি যোগ করুন<br><small>images/photo-4.jpg</small></div>
+      <div class="gallery-item placeholder">ছবি যোগ করুন<br><small>images/photo-5.jpg</small></div>
+      <div class="gallery-item placeholder">ছবি যোগ করুন<br><small>images/photo-6.jpg</small></div>
+    </div>
+  </div>
+</section>
+
+<section id="invitation">
+  <div class="wrap">
+    <p class="eyebrow">Invitation</p>
+    <h2 class="heading">আমন্ত্রণ</h2>
+    <div class="divider"><span class="line"></span><svg viewBox="0 0 24 24" fill="none" stroke="#c79a3f" stroke-width="1.4"><path d="M12 3 L14 9 L21 9 L15.5 13 L17.5 20 L12 16 L6.5 20 L8.5 13 L3 9 L10 9 Z"/></svg><span class="line"></span></div>
+
+    <div class="invite-box">
+      <span class="big-quote">"</span>
+      তোমায়, আমার, আমাদের চিরদিন…<br><br>
+      পরম করুণাময় ঈশ্বরের কৃপায় এবং পরম পূজনীয় গুরুজনদের আশীর্বাদে, আমরা আমাদের শুভ বিবাহ অনুষ্ঠানে
+      আপনাদের সাদর আমন্ত্রণ জানাচ্ছি। আপনাদের উপস্থিতি ও আশীর্বাদ আমাদের এই নতুন যাত্রাকে
+      পূর্ণতা দেবে।<br><br>
+      ঈশ্বরের নিকট পাত্র ও পাত্রীর আগামী দাম্পত্য জীবনের সুখ, সমৃদ্ধি ও দীর্ঘায়ু কামনা করি।
+    </div>
+  </div>
+</section>
+
+<section id="rsvp">
+  <div class="wrap">
+    <p class="eyebrow">Contact &amp; RSVP</p>
+    <h2 class="heading">যোগাযোগ ও উপস্থিতি নিশ্চিতকরণ</h2>
+    <div class="divider"><span class="line"></span><svg viewBox="0 0 24 24" fill="none" stroke="#c79a3f" stroke-width="1.4"><path d="M12 3 L14 9 L21 9 L15.5 13 L17.5 20 L12 16 L6.5 20 L8.5 13 L3 9 L10 9 Z"/></svg><span class="line"></span></div>
+
+    <div class="rsvp-wrap">
+      <div class="contact-box">
+        <h3>যোগাযোগ করুন</h3>
+        <div class="contact-row"><span>পাত্রী পক্ষ</span><span>আপনার নম্বর যুক্ত করুন</span></div>
+        <div class="contact-row"><span>পাত্র পক্ষ</span><span>আপনার নম্বর যুক্ত করুন</span></div>
+        <div class="contact-row"><span>ইমেইল</span><span>আপনার ইমেইল যুক্ত করুন</span></div>
+        <a class="whatsapp-btn" href="https://wa.me/910000000000" target="_blank" rel="noopener">💬 WhatsApp-এ বার্তা পাঠান</a>
+        <p style="font-size:0.75rem; color:var(--ink-soft); margin-top:10px;">* উপরের নম্বরটি একটি স্থানধারক — অনুগ্রহ করে আপনার প্রকৃত নম্বর দিয়ে প্রতিস্থাপন করুন।</p>
+      </div>
+
+      <form class="rsvp-form" id="rsvpForm">
+        <h3>RSVP ফর্ম</h3>
+        <label for="rname">আপনার নাম</label>
+        <input type="text" id="rname" name="name" placeholder="নাম লিখুন" required>
+
+        <label for="rguests">অতিথি সংখ্যা</label>
+        <select id="rguests" name="guests">
+          <option>১</option><option>২</option><option>৩</option><option>৪+</option>
+        </select>
+
+        <label for="revent">যে অনুষ্ঠানে উপস্থিত থাকবেন</label>
+        <select id="revent" name="event">
+          <option>শুভ বিবাহ</option>
+          <option>গায়ে হলুদ</option>
+          <option>আশীর্বাদ</option>
+          <option>সব অনুষ্ঠান</option>
+        </select>
+
+        <label for="rmsg">শুভেচ্ছা বার্তা (ঐচ্ছিক)</label>
+        <textarea id="rmsg" name="message" rows="3" placeholder="আপনার শুভেচ্ছা লিখুন..."></textarea>
+
+        <button type="submit">RSVP পাঠান</button>
+      </form>
+    </div>
+  </div>
+</section>
+
+<footer class="site-footer">
+  <svg class="conch" viewBox="0 0 48 48" fill="none" stroke="#e8cd8a" stroke-width="1.4"><path d="M24 6c8 0 14 8 14 18 0 9-6 16-14 16S10 33 10 24C10 14 16 6 24 6Z"/></svg>
+  <p class="names">অরিজিতা ও অজয়</p>
+  <p class="fine">শুভ বিবাহ &nbsp;·&nbsp; ২৮ জানুয়ারী, ২০২৭ &nbsp;·&nbsp; সানু ভবন, রায়কতপাড়া, জলপাইগুড়ি</p>
+  <p class="credit">তৈরি হয়েছে ভালোবাসা দিয়ে</p>
+</footer>
+
+<button class="to-top" id="toTop" title="উপরে যান">↑</button>
+
+<script>
+  (function(){
+    const ring = document.getElementById('petalsRing');
+    const cx=200, cy=200, r=110, n=16;
+    let html='';
+    for(let i=0;i<n;i++){
+      const a = (i/n)*Math.PI*2;
+      const x = cx + r*Math.cos(a);
+      const y = cy + r*Math.sin(a);
+      html += `<circle cx="${x.toFixed(1)}" cy="${y.toFixed(1)}" r="10" />`;
+      html += `<path d="M${cx},${cy} L${x.toFixed(1)},${y.toFixed(1)}" stroke-width="0.7" />`;
+    }
+    if(ring) ring.innerHTML = html;
+  })();
+
+  (function(){
+    const container = document.getElementById('petals');
+    const flowers = ['🌸','🌺','🌼','🪷'];
+    const count = window.innerWidth < 600 ? 10 : 18;
+    for(let i=0;i<count;i++){
+      const el = document.createElement('span');
+      el.className='petal';
+      el.textContent = flowers[Math.floor(Math.random()*flowers.length)];
+      el.style.left = Math.random()*100 + 'vw';
+      el.style.fontSize = (0.9 + Math.random()*1.1) + 'rem';
+      const duration = 10 + Math.random()*14;
+      el.style.animationDuration = duration + 's';
+      el.style.animationDelay = (Math.random()*duration) + 's';
+      container.appendChild(el);
+    }
+  })();
+
+  const nav = document.getElementById('siteNav');
+  const sections = document.querySelectorAll('section[id]');
+  const navLinks = document.querySelectorAll('.links a');
+  const toTop = document.getElementById('toTop');
+
+  window.addEventListener('scroll', () => {
+    nav.classList.toggle('solid', window.scrollY > 60);
+    toTop.classList.toggle('show', window.scrollY > 500);
+  });
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if(entry.isIntersecting){
+        navLinks.forEach(l => l.classList.remove('active'));
+        const link = document.querySelector(`.links a[href="#${entry.target.id}"]`);
+        if(link) link.classList.add('active');
+      }
+    });
+  }, { rootMargin: '-45% 0px -50% 0px' });
+  sections.forEach(s => observer.observe(s));
+
+  toTop.addEventListener('click', () => window.scrollTo({top:0, behavior:'smooth'}));
+
+  const menuBtn = document.getElementById('menuBtn');
+  const navLinksWrap = document.getElementById('navLinks');
+  menuBtn.addEventListener('click', () => navLinksWrap.classList.toggle('open'));
+  navLinksWrap.querySelectorAll('a').forEach(a => a.addEventListener('click', () => navLinksWrap.classList.remove('open')));
+
+  const musicBtn = document.getElementById('musicBtn');
+  const audio = document.getElementById('bgMusic');
+  let playing = false;
+  musicBtn.addEventListener('click', () => {
+    if(!audio.querySelector('source')){
+      musicBtn.textContent = '🔇';
+      alert('সঙ্গীত ফাইল যুক্ত করা হয়নি। <audio id="bgMusic"> ট্যাগের ভিতরে আপনার mp3 ফাইলের লিংক যোগ করুন।');
+      return;
+    }
+    if(playing){ audio.pause(); musicBtn.textContent='🔈'; }
+    else { audio.play().catch(()=>{}); musicBtn.textContent='🔊'; }
+    playing = !playing;
+  });
+
+  const target = new Date(2027, 0, 28, 1, 29, 0);
+  function updateCountdown(){
+    const now = new Date();
+    let diff = target - now;
+    const cd = document.getElementById('countdown');
+    if(diff <= 0){
+      cd.innerHTML = '<p style="font-family:\'Tiro Bangla\',serif; font-size:1.3rem; color:#fff8ea;">শুভ বিবাহ সম্পন্ন হয়েছে 💐</p>';
+      return;
+    }
+    const days = Math.floor(diff/(1000*60*60*24));
+    const hours = Math.floor((diff/(1000*60*60))%24);
+    const mins = Math.floor((diff/(1000*60))%60);
+    const secs = Math.floor((diff/1000)%60);
+    document.getElementById('cd-days').textContent = String(days).padStart(2,'0');
+    document.getElementById('cd-hours').textContent = String(hours).padStart(2,'0');
+    document.getElementById('cd-mins').textContent = String(mins).padStart(2,'0');
+    document.getElementById('cd-secs').textContent = String(secs).padStart(2,'0');
+  }
+  updateCountdown();
+  setInterval(updateCountdown, 1000);
+
+  document.getElementById('rsvpForm').addEventListener('submit', function(e){
+    e.preventDefault();
+    const name = document.getElementById('rname').value;
+    const guests = document.getElementById('rguests').value;
+    const event = document.getElementById('revent').value;
+    const msg = document.getElementById('rmsg').value;
+    const text = encodeURIComponent(`RSVP\nনাম: ${name}\nঅতিথি সংখ্যা: ${guests}\nঅনুষ্ঠান: ${event}\nবার্তা: ${msg}`);
+    window.open(`https://wa.me/910000000000?text=${text}`, '_blank');
+  });
+</script>
+
+</body>
+</html>
